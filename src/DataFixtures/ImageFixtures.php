@@ -1,0 +1,29 @@
+<?php
+
+namespace App\DataFixtures;
+
+use App\Entity\Image;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Persistence\ObjectManager;
+
+class ImageFixtures extends Fixture
+{
+    public function load(ObjectManager $manager)
+    {
+        for ($count = 1; $count < 3; $count++) {
+            $image = new Image();
+            $image->setNom('image'.$count.'.png');
+            $image->setChemin('public/image/image'.$count.'.png');
+            $image->setBien($this->getReference(BienFixtures::BIEN_REFERENCE));
+            $manager->persist($image);  
+        }
+       
+        $manager->flush();
+    }
+    public function getDependencies()
+    {
+        return [
+            BienFixtures::class,
+        ];
+    }
+}
