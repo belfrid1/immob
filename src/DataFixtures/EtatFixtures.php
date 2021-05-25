@@ -12,11 +12,12 @@ class EtatFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $etat = new Etat();
+        
         $etat->setLibelleEtat('BV');
         $etat->setLibelleEtat('Vendu');
-        $this->addReference(self::ETAT_REFERENCE, $etat);
-        $manager->persist($etat);  
-       
+        $manager->persist($etat);
+        
         $manager->flush();
+        $this->addReference(self::ETAT_REFERENCE, $etat);
     }
 }

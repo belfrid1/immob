@@ -5,10 +5,13 @@ namespace App\DataFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Annonce;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class AnnoncesFixtures extends Fixture
+class AnnoncesFixtures extends Fixture implements DependentFixtureInterface
 {
     public const ANNONCE_REFERENCE = 'annonce1';
+    
+   
     public function load(ObjectManager $manager)
     {
         
@@ -17,15 +20,15 @@ class AnnoncesFixtures extends Fixture
         $annonces = [];
         for ($count = 0; $count < 30; $count++) {
             $annonce = new Annonce();
+
             $annonce->setLibelleType("annonce" . $count);
             $annonce->setBien($this->getReference(BienFixtures::BIEN_REFERENCE));
-            $this->addReference(self::ANNONCE_REFERENCE, $annonce);
             $manager->persist($annonce);
-            $annonces[] =  $annonce;
-             
+            $annonces[] =  $annonce;             
         } 
 
         $manager->flush();
+        $this->addReference(self::ANNONCE_REFERENCE, $annonce);
     }
     public function getDependencies()
     {

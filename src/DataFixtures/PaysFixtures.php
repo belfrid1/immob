@@ -7,7 +7,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
 
-class PaysFixtures extends Fixture
+class PaysFixtures extends Fixture 
 {
     public const PAYS_REFERENCE = 'France';
 
@@ -16,9 +16,8 @@ class PaysFixtures extends Fixture
         // creation pays fixtures
         $pays = new Pays();
         $pays->setNom('France');
-       
-        $this->addReference(self::PAYS_REFERENCE, $pays);
         $manager->persist($pays);
         $manager->flush();
+        $this->addReference(self::PAYS_REFERENCE, $pays);
     }
 }

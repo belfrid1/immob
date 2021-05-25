@@ -16,9 +16,10 @@ class ProprietaireFixtures extends Fixture
         $proprietaire->setPrenom('Dupont');
         $proprietaire->setAdresse('15 Rue paris');  
         $proprietaire->setTelephone('33 06 545025'); 
-        $this->addReference(self::PROPRIETAIRE_REFERENCE, $proprietaire);     
+             
         $manager->persist($proprietaire);  
        
         $manager->flush();
+        $this->addReference(self::PROPRIETAIRE_REFERENCE, $proprietaire);
     }
 }

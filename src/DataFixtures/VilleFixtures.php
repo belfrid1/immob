@@ -5,8 +5,9 @@ namespace App\DataFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Ville;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class VilleFixtures extends Fixture
+class VilleFixtures extends Fixture implements DependentFixtureInterface
 {
     
     public const VILLE_REFERENCE = 'Paris';
@@ -17,10 +18,11 @@ class VilleFixtures extends Fixture
             $ville = new Ville();
             $ville->setNom("ville" . $count);
             $ville->setPays($this->getReference(PaysFixtures::PAYS_REFERENCE));
-            $this->addReference(self::VILLE_REFERENCE, $ville);
+            
             $manager->persist($ville);
         } 
         $manager->flush();
+        $this->addReference(self::VILLE_REFERENCE, $ville);
     }
     public function getDependencies()
     {

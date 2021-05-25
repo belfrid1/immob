@@ -4,12 +4,13 @@ namespace App\DataFixtures;
 
 use App\Entity\Bien;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
 
-class BienFixtures extends Fixture
+class BienFixtures extends Fixture implements DependentFixtureInterface
 {
-    // public const BIEN_REFERENCE = 'nomBien';
+    public const BIEN_REFERENCE = 'bien1';
 
     public function load(ObjectManager $manager)
     {
@@ -29,6 +30,7 @@ class BienFixtures extends Fixture
             $manager->persist($bien);
         } 
         $manager->flush();
+        $this->addReference(self::BIEN_REFERENCE, $bien);
     }
     public function getDependencies()
     {

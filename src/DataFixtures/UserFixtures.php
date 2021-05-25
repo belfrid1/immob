@@ -17,6 +17,7 @@ class UserFixtures extends Fixture
             $user->setLogin("Login " . $count);
             $user->setPrenom("nom" . $count);
             $user->setPrenom("Prenom" . $count);
+            
             $password = $this->encoder->encodePassword($user, 'password');
             $user->setPassword($password);
             $manager->persist($user);
