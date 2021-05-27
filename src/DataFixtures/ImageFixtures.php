@@ -15,7 +15,7 @@ class ImageFixtures extends Fixture implements DependentFixtureInterface
             $image = new Image();
             $image->setNom('image'.$count.'.png');
             $image->setChemin('public/image/image'.$count.'.png');
-            $image->setBien($this->getReference(BienFixtures::BIEN_REFERENCE));
+            $image->setBien($this->getReference('BIEN'));
             $manager->persist($image);  
         }
        
