@@ -22,4 +22,5 @@ class AuthController extends AbstractController
     {
         return $this->render('frontoffice/register.html.twig');
     }
+    
 }
