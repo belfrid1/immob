@@ -1,39 +1,69 @@
-{% extends 'base.html.twig' %}
+{% extends '/backoffice/layout/base.html.twig' %}
 
-{% block title %}Bien index{% endblock %}
+{% block body %}    
+    <div class="wrapper ">
+    <!-- sidebar -->
+    {% include 'backoffice/layout/sidebar.html.twig' %}
+    <!-- sidebar -->
+    
+    <div class="main-panel">
+    <!-- Navbar -->
+    {% include 'backoffice/layout/navbar.html.twig' %}
+    <!-- End Navbar -->   
+    <!-- content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">Bien</h4>
+                    <p class="card-category"><a href="{{ path('bien_new') }}"><i class="material-icons"></i> Creer un nouveau Bien</a></p>  
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nom</th>
+                                <th>Surface</th>
+                                <th>Piece</th>
+                                <th>actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for bien in biens %}
+                                <tr>
+                                    <td>{{ bien.id }}</td>
+                                    <td>{{ bien.nom }}</td>
+                                    <td>{{ bien.surface }}</td>
+                                    <td>{{ bien.piece }}</td>
+                                    <td>
+                                        <a href="{{ path('bien_show', {'id': bien.id}) }}">show</a>
+                                        <a href="{{ path('bien_edit', {'id': bien.id}) }}">edit</a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="5">no records found</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>           
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!-- content -->
+    <!-- footer -->
+    {% include 'backoffice/layout/footer.html.twig' %}
+    <!-- footer -->
+    </div>
+</div>
 
-{% block body %}
-    <h1>Bien index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Surface</th>
-                <th>Piece</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for bien in biens %}
-            <tr>
-                <td>{{ bien.id }}</td>
-                <td>{{ bien.nom }}</td>
-                <td>{{ bien.surface }}</td>
-                <td>{{ bien.piece }}</td>
-                <td>
-                    <a href="{{ path('bien_show', {'id': bien.id}) }}">show</a>
-                    <a href="{{ path('bien_edit', {'id': bien.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('bien_new') }}">Create new</a>
+    
 {% endblock %}
