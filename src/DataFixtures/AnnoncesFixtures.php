@@ -24,11 +24,10 @@ class AnnoncesFixtures extends Fixture implements DependentFixtureInterface
             $annonce->setLibelleType("annonce" . $count);
             $annonce->setBien($this->getReference('BIEN'));
             $manager->persist($annonce);
-            $annonces[] =  $annonce;             
-        } 
-
-        $manager->flush();
-        $this->addReference(self::ANNONCE_REFERENCE, $annonce);
+            $annonces[] =  $annonce;
+            $manager->flush();
+            $this->addReference(self::ANNONCE_REFERENCE, $annonce);
+        }
     }
     public function getDependencies()
     {

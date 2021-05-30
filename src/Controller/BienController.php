@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/bien")
+ * @Route("admin//bien")
  */
 class BienController extends AbstractController
 {
@@ -68,8 +68,7 @@ class BienController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('bien_index');
+            return $this->redirectToRoute('bien_show', ['id' => $bien->getId()]);
         }
 
         return $this->render('bien/edit.html.twig', [

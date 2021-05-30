@@ -6,6 +6,7 @@ use App\Repository\BienRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=BienRepository::class)
@@ -21,51 +22,60 @@ class Bien
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $surface;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $piece;
 
     /**
      * @ORM\OneToMany(targetEntity=Image::class, mappedBy="bien", orphanRemoval=true)
+     * @Assert\NotBlank
      */
     private $images;
 
     /**
      * @ORM\ManyToOne(targetEntity=Proprietaire::class, inversedBy="biens")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank
      */
     private $proprietaire;
 
     /**
      * @ORM\ManyToOne(targetEntity=Ville::class, inversedBy="biens")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank
      */
     private $ville;
 
     /**
      * @ORM\ManyToOne(targetEntity=Etat::class, inversedBy="biens")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank
      */
     private $etat;
 
     /**
      * @ORM\ManyToOne(targetEntity=Tranche::class, inversedBy="biens")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank
      */
     private $tranche;
 
     /**
      * @ORM\ManyToOne(targetEntity=TypeBien::class, inversedBy="biens")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank
      */
     private $type_bien;
 
@@ -74,6 +84,11 @@ class Bien
     public function __construct()
     {
         $this->images = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return ucfirst($this->getNom());
     }
 
     public function getId(): ?int

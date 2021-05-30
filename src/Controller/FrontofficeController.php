@@ -17,4 +17,11 @@ class FrontofficeController extends AbstractController
             'controller_name' => 'FrontofficeController',
         ]);
     }
+    /**
+     * @Route("/search", name="search")
+     */
+    public function search(): Response
+    {
+        return $this->render('frontoffice/search.html.twig');
+    }
 }

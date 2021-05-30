@@ -17,8 +17,8 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header card-header-primary">
-                                    <h4 class="card-title ">Annonces</h4>
-                                    <p class="card-category"><a href="{{ path('annonces_new') }}"><i class="material-icons"></i> Creer un nouvelle Annonce</a></p>
+                                    <h4 class="card-title ">Utilisateurs</h4>
+                                    <p class="card-category"><a href="{{ path('users_new') }}"><i class="material-icons"></i> Creer un utilisateur</a></p>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -26,20 +26,22 @@
                                             <thead>
                                             <tr>
                                                 <th>Id</th>
-                                                <th>Libellé</th>
-                                                <th>Bien</th>
-                                                <th>Actions</th>
+                                                <th>Nom</th>
+                                                <th>Prenom</th>
+                                                <th>Email</th>
+                                                <th>actions</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {% for annonce in annonces %}
+                                            {% for user in users %}
                                                 <tr>
-                                                    <td>{{ annonce.id }}</td>
-                                                    <td>{{ annonce.libelleType }}</td>
-                                                    <td>{{ annonce.bien }}</td>
+                                                    <td>{{ user.id }}</td>
+                                                    <td>{{ user.nom }}</td>
+                                                    <td>{{ user.prenom }}</td>
+                                                    <td>{{ user.email }}</td>
                                                     <td>
-                                                        <a href="{{ path('annonces_show', {'id': annonce.id}) }}">show</a>
-                                                        <a href="{{ path('annonces_edit', {'id': annonce.id}) }}">edit</a>
+                                                        <a href="{{ path('users_show', {'id': user.id}) }}">show</a>
+                                                        <a href="{{ path('users_edit', {'id': user.id}) }}">edit</a>
                                                     </td>
                                                 </tr>
                                             {% else %}
@@ -62,6 +64,4 @@
             <!-- footer -->
         </div>
     </div>
-
-
 {% endblock %}

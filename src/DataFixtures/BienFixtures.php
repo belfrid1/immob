@@ -10,6 +10,8 @@ use Faker\Factory;
 
 class BienFixtures extends Fixture implements DependentFixtureInterface
 {
+
+    public const BIEN_REFERENCE = 'Bien';
     
     
 

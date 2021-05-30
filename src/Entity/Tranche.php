@@ -34,6 +34,11 @@ class Tranche
      */
     private $biens;
 
+    public function __toString()
+    {
+        return number_format($this->getPrixMin(), 0, ',', ' ') . ' - ' . number_format($this->getPrixMax(), 0, ',', ' ') . ' ' .  '(FCFA)';
+    }
+
     public function __construct()
     {
         $this->biens = new ArrayCollection();

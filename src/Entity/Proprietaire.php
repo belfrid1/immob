@@ -49,6 +49,12 @@ class Proprietaire
         $this->biens = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return ucfirst(trim($this->getNom())) . ' ' .ucfirst(trim($this->getPrenom()));
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;
