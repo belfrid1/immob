@@ -18,11 +18,11 @@ class AnnoncesFixtures extends Fixture implements DependentFixtureInterface
         // $product = new Product();
         // $manager->persist($product);
         $annonces = [];
-        for ($count = 0; $count < 30; $count++) {
+        for ($count = 0; $count < 10; $count++) {
             $annonce = new Annonce();
 
             $annonce->setLibelleType("annonce" . $count);
-            $annonce->setBien($this->getReference(BienFixtures::BIEN_REFERENCE));
+            $annonce->setBien($this->getReference('BIEN'));
             $manager->persist($annonce);
             $annonces[] =  $annonce;             
         } 
