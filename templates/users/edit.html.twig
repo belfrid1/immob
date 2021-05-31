@@ -1,7 +1,7 @@
 {% extends '/backoffice/layout/base.html.twig' %}
 
 {% block body %}
-<div class="wrapper ">
+    <div class="wrapper ">
     <!-- sidebar -->
     {% include 'backoffice/layout/sidebar.html.twig' %}
     <!-- sidebar -->
@@ -14,14 +14,16 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    {{ include('bien/_form.html.twig', {'title': 'Modification d\'un bien '}) }}
+                    {{ include('users/_form.html.twig', {'title': 'Modification d\'un utilisateur '}) }}
                 </div>
 
                 <div class="row">
                     <div class="col-md-12">
-                        <a class="btn" href="{{ path('bien_index') }}">Liste des biens</a>
-                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn">Delete</a>
-                        {{ include('bien/_delete_form.html.twig') }}
+                        <a class="btn" href="{{ path('users_index') }}">Liste des utilisateurs</a>
+                        {% if app.user.id != user.id %}
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn">Delete</a>
+                            {{ include('users/_delete_form.html.twig') }}
+                        {% endif %}
                     </div>
                 </div>
             </div>

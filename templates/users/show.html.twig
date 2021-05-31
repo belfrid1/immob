@@ -1,0 +1,57 @@
+{% extends '/backoffice/layout/base.html.twig' %}
+
+{% block body %}
+    <div class="wrapper ">
+        <!-- sidebar -->
+        {% include 'backoffice/layout/sidebar.html.twig' %}
+        <!-- sidebar -->
+
+        <div class="main-panel">
+            <!-- Navbar -->
+            {% include 'backoffice/layout/navbar.html.twig' %}
+            <!-- End Navbar -->
+            <!-- content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-product">
+                                <div class="card-body">
+                                    <div class="card-actions text-center">
+                                        <a href="{{ path('users_index') }}" class="btn btn-default btn-link" rel="tooltip" data-placement="bottom" title="Liste des utilisateurs">
+                                            <i class="material-icons">art_track</i>
+                                        </a>
+                                        <a href="{{ path('users_edit', {id: user.id}) }}" type="button" class="btn btn-success btn-link" rel="tooltip" data-placement="bottom" title="Modifier">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                    </div>
+                                    <div class="card-description">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p class="font-weight-bold">Nom: {{ user.nom }}</p>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <p class="font-weight-bold">Prénom: {{ user.prenom }}</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p class="font-weight-bold">Email: {{ user.email }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- content -->
+                <!-- footer -->
+                {% include 'backoffice/layout/footer.html.twig' %}
+                <!-- footer -->
+            </div>
+        </div>
+    </div>
+{% endblock %}

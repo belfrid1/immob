@@ -1,41 +1,51 @@
- <!-- sidebar -->
+        {% set backOffice = ['backoffice'] %}
+        {% set bien = ['bien_index', 'bien_edit', 'bien_new', 'bien_show', 'bien_delete'] %}
+        {% set annonces = ['annonces_index', 'annonces_edit', 'annonces_new', 'annonces_show', 'annonces_delete'] %}
+        {% set users = ['users_index', 'users_edit', 'users_new', 'users_show', 'users_delete'] %}
+
         <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
         
         <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
             BO Immob
             </a></div>
         <div class="sidebar-wrapper">
+
             <ul class="nav">
-            <li class="nav-item active  ">
-                <a class="nav-link" href="{{ path('backoffice')}}">
-                <i class="material-icons">dashboard</i>
-                <p>Dashboard</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="{{ path('utilisateurs')}}">
-                <i class="material-icons">person</i>
-                <p>Utilisateurs</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="{{ path('annonces')}}">
-                <i class="material-icons">content_paste</i>
-                <p>Annonces</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="{{ path('bien_index')}}">
-                <i class="material-icons">library_books</i>
-                <p>Biens</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="./icons.html">
-                <i class="material-icons">bubble_chart</i>
-                <p>Parametres</p>
-                </a>
-            </li>
+                <li class="nav-item {% if app.request.attributes.get('_route') in backOffice %} active {% endif %}">
+                    <a class="nav-link" href="{{ path('backoffice')}}">
+                        <i class="material-icons">dashboard</i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+
+                <li class="nav-item {% if app.request.attributes.get('_route') in bien %} active {% endif %} ">
+                    <a class="nav-link" href="{{ path('bien_index')}}">
+                        <i class="material-icons">library_books</i>
+                        <p>Biens</p>
+                    </a>
+                </li>
+
+                <li class="nav-item {% if app.request.attributes.get('_route') in annonces %} active {% endif %} ">
+                    <a class="nav-link" href="{{ path('annonces_index')}}">
+                        <i class="material-icons">content_paste</i>
+                        <p>Annonces</p>
+                    </a>
+                </li>
+
+
+                <li class="nav-item {% if app.request.attributes.get('_route') in users %} active {% endif %}">
+                    <a class="nav-link" href="{{ path('users_index')}}">
+                    <i class="material-icons">person</i>
+                    <p>Utilisateurs</p>
+                    </a>
+                </li>
+
+                <li class="nav-item ">
+                    <a class="nav-link" href="./icons.html">
+                    <i class="material-icons">bubble_chart</i>
+                    <p>Parametres</p>
+                    </a>
+                </li>
             </ul>
         </div>
         </div>

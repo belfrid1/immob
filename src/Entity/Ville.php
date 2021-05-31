@@ -40,6 +40,11 @@ class Ville
         $this->biens = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return ucfirst(trim($this->getNom()));
+    }
+
     public function getId(): ?int
     {
         return $this->id;

@@ -1,34 +1,90 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Bien{% endblock %}
+{% extends '/backoffice/layout/base.html.twig' %}
 
 {% block body %}
-    <h1>Bien</h1>
+<div class="wrapper ">
+    <!-- sidebar -->
+    {% include 'backoffice/layout/sidebar.html.twig' %}
+    <!-- sidebar -->
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ bien.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ bien.nom }}</td>
-            </tr>
-            <tr>
-                <th>Surface</th>
-                <td>{{ bien.surface }}</td>
-            </tr>
-            <tr>
-                <th>Piece</th>
-                <td>{{ bien.piece }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="main-panel">
+        <!-- Navbar -->
+        {% include 'backoffice/layout/navbar.html.twig' %}
+        <!-- End Navbar -->
+        <!-- content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card card-product">
+                            <div class="card-body">
+                                <div class="card-actions text-center">
+                                    <a href="{{ path('bien_index') }}" class="btn btn-default btn-link" rel="tooltip" data-placement="bottom" title="Liste des biens">
+                                        <i class="material-icons">art_track</i>
+                                    </a>
+                                    <a href="{{ path('bien_edit', {id: bien.id}) }}" type="button" class="btn btn-success btn-link" rel="tooltip" data-placement="bottom" title="Modifier">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                </div>
+                                <h4 class="card-title">
+                                    <a href="#pablo">{{ bien.nom }}</a>
+                                </h4>
+                                <div class="card-description">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="font-weight-bold">Surface: {{ bien.surface }}</p>
+                                        </div>
 
-    <a href="{{ path('bien_index') }}">back to list</a>
+                                        <div class="col-md-6">
+                                            <p class="font-weight-bold">Pièce: {{ bien.piece }}</p>
+                                        </div>
+                                    </div>
 
-    <a href="{{ path('bien_edit', {'id': bien.id}) }}">edit</a>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="font-weight-bold">Type du bien: {{ bien.typeBien }}</p>
+                                        </div>
 
-    {{ include('bien/_delete_form.html.twig') }}
+                                        <div class="col-md-6">
+                                            <p class="font-weight-bold">Etat: {{ bien.etat }}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p class="font-weight-bold">Propriétaire: {{ bien.proprietaire }}</p>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="price">
+                                    <h4>{{ bien.tranche }}</h4>
+                                </div>
+                                <div class="stats">
+                                    <p class="card-category"><i class="material-icons">place</i> {{ bien.ville }}, {{ bien.ville.pays }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card card-product">
+                            <div class="card-header card-header-image" data-header-animation="true">
+                                <a href="#pablo">
+                                    <img class="img" src="https://demos.creative-tim.com/material-dashboard-pro/assets/img/card-2.jpg">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content -->
+            <!-- footer -->
+            {% include 'backoffice/layout/footer.html.twig' %}
+            <!-- footer -->
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -1,0 +1,61 @@
+{% extends '/backoffice/layout/base.html.twig' %}
+
+{% block body %}
+    <div class="wrapper ">
+        <!-- sidebar -->
+        {% include 'backoffice/layout/sidebar.html.twig' %}
+        <!-- sidebar -->
+
+        <div class="main-panel">
+            <!-- Navbar -->
+            {% include 'backoffice/layout/navbar.html.twig' %}
+            <!-- End Navbar -->
+            <!-- content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card card-product">
+                                <div class="card-body">
+                                    <div class="card-actions text-center">
+                                        <a href="{{ path('annonces_index') }}" class="btn btn-default btn-link" rel="tooltip" data-placement="bottom" title="Liste des annonces">
+                                            <i class="material-icons">art_track</i>
+                                        </a>
+                                        <a href="{{ path('annonces_edit', {id: annonce.id}) }}" type="button" class="btn btn-success btn-link" rel="tooltip" data-placement="bottom" title="Modifier">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                    </div>
+                                    <div class="card-description">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p class="font-weight-bold">Libellé: {{ annonce.libelleType }}</p>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <p class="font-weight-bold">Bien: {{ annonce.bien }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card card-product">
+                                <div class="card-header card-header-image" data-header-animation="true">
+                                    <a href="#pablo">
+                                        <img class="img" src="https://demos.creative-tim.com/material-dashboard-pro/assets/img/card-2.jpg">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- content -->
+                <!-- footer -->
+                {% include 'backoffice/layout/footer.html.twig' %}
+                <!-- footer -->
+            </div>
+        </div>
+    </div>
+{% endblock %}

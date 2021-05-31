@@ -34,6 +34,11 @@ class Etat
         $this->biens = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return ucfirst(trim($this->getLibelleEtat()));
+    }
+
     public function getId(): ?int
     {
         return $this->id;
