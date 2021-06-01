@@ -1,73 +1,45 @@
 {% extends '/frontoffice/layout/base.html.twig' %}
 
 
-{% block stylesheets %}
-           <style>
-                .center {
-                border: 3px solid grey;
-                padding: 10px;
-                }
-           </style>
-{% endblock %}
 {% block body %}
     <div class="wrapper">
         {% include 'frontoffice/layout/header.html.twig' %}
             
-        <!--=== Product Content ===-->
+
         <div class="container content-md">
-         <!-- Begin Content -->
-        
-        <div class="row" >
-            <div class="col-md-offset-3 col-md-6 center" >
-                <!-- Checkout-Form -->
-                <form method="post" action="{{ path('searchResult')}}">
-                    <div class="row">
-                        <div class="form-group">
-                        <div class="col-md-12">
-                            <label for="exampleInputEmail1"> <i class="fa fa-location"></i> Ville</label>
 
-                            <select class="form-control" id="exampleFormControlSelect1" name="ville" placeholder="Ville; localités, departement" required>
-
-                                {% for ville in villes %}
-                                    <option value="{{ ville.id }}"> {{ ville.nom }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group">     
-                            <div class="col-md-3">
-                                <label for="exampleFormControlSelect1">Type de bien</label>
-                                    <select class="form-control" id="exampleFormControlSelect1" name="type_bien" required>
-                                        {% for type_bien in type_biens %}
-                                            <option value="{{ type_bien.id }}"> {{ type_bien.libelle }}</option>
-                                        {% endfor %}
-                                    </select>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="exampleFormControlSelect1">Surface </label>
-                                <input type="text" class="form-control" name="surface"  aria-describedby="emailHelp" placeholder="Surface en M2" required>
-
-                            </div> 
-                            <div class="col-md-3">
-                                <label for="exampleFormControlSelect1">Budget</label>
-                                <input type="text" class="form-control" name="budget"  aria-describedby="emailHelp" placeholder="Budget Max" required>
-
-                            </div> 
-                            <div class="col-md-3">
-                            <label for="exampleFormControlSelect1"> </label>
-                                <button type="submit" class="form-control btn btn-primary">  Rechercher</button>
-                            </div>                          
-                        </div>
-                    </div>
-                    
-                     
-                </form>       
-                <!-- End Checkout-Form -->
+            <div class="heading heading-v1 margin-bottom-20">
+                <h2>Résultat de la recherche ( {{ biens|length}} )</h2>
             </div>
-        </div>
 
+
+            <!--=== Illustration v2 ===-->
+            <div class="row illustration-v2">
+                {% for bien in biens %}
+                    <div class="col-md-3 col-sm-6 md-margin-bottom-30">
+                        <div class="product-img">
+                            <a href="shop-ui-inner.html"><img class="full-width img-responsive" src="{{ asset('frontoffice/assets/img/appart1.png')}}" alt=""></a>
+                            <a class="product-review" href="shop-ui-inner.html">Quick review</a>
+                            <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i>Louer</a>
+                        </div>
+                        <div class="product-description product-description-brd" style="margin-bottom: 30px">
+                            <div class="overflow-h margin-bottom-5">
+                                <div class="pull-left">
+                                    <h4 class="title-price"><a href="shop-ui-inner.html">{{ bien.nom }}</a></h4>
+                                    <span class="gender text-uppercase">{{ bien.getTranche.getPrixMin~"F - "~bien.getTranche.getPrixMin }}F</span>
+                                    <span class="gender">{{ bien.getVille.nom}}</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="title-price">{{ bien.surface }}</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div> 
+            <!--=== End Illustration v2 ===-->
         </div>
         <!--=== End Product Content ===-->
 
@@ -137,9 +109,9 @@
                         <i class="fa fa-truck"></i>
                     </div>
                     <div class="product-service-in">
-                        <h3>Free Delivery</h3>
-                        <p>Integer mattis lacinia felis vel molestie. Ut eu euismod erat, tincidunt pulvinar semper veliUt porta, leo...</p>
-                        <a href="#">+Read More</a>
+                        <h3>Service de demenagement</h3>
+                        <p>Service de demenagement disponible</p>
+                        <a href="#">En savoir plus</a>
                     </div>
                 </div>
                 <div class="col-md-4 product-service md-margin-bottom-30">
@@ -147,9 +119,9 @@
                         <i class="icon-earphones-alt"></i>
                     </div>
                     <div class="product-service-in">
-                        <h3>Customer Service</h3>
-                        <p>Integer mattis lacinia felis vel molestie. Ut eu euismod erat, tincidunt pulvinar semper veliUt porta, leo...</p>
-                        <a href="#">+Read More</a>
+                        <h3>Service clientelle</h3>
+                        <p></p>
+                        
                     </div>
                 </div>
                 <div class="col-md-4 product-service">
@@ -157,14 +129,13 @@
                         <i class="icon-refresh"></i>
                     </div>
                     <div class="product-service-in">
-                        <h3>Free Returns</h3>
-                        <p>Integer mattis lacinia felis vel molestie. Ut eu euismod erat, tincidunt pulvinar semper veliUt porta, leo...</p>
-                        <a href="#">+Read More</a>
+                        <h3>Annonces immobilières</h3>
+                        <p>Achat maison , vente maison , Location appartement...</p>
+                        <a href="#">En savoir plus</a>
                     </div>
                 </div>
             </div><!--/end row-->
             <!--=== End Product Service ===-->
-            
             
         </div><!--/end cotnainer-->
 
@@ -183,12 +154,13 @@
                             <span class="discount-percent">%</span>
                             <span class="discount-off"></span>
                         </div>
-                           
+                          
                     </div>    
                 </div>
             </div>
         </div>
         <!--=== End Collection Banner ===-->
+
         {% include 'frontoffice/layout/footer.html.twig' %}
     </div><!--/wrapper-->
 {% endblock %}
