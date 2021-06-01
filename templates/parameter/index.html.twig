@@ -1,0 +1,92 @@
+{% extends '/backoffice/layout/base.html.twig' %}
+
+{% block body %}
+    <div class="wrapper ">
+        <!-- sidebar -->
+        {% include 'backoffice/layout/sidebar.html.twig' %}
+        <!-- sidebar -->
+
+        <div class="main-panel">
+            <!-- Navbar -->
+            {% include 'backoffice/layout/navbar.html.twig' %}
+            <!-- End Navbar -->
+            <!-- content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class="card-title ">Paramètre</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="card card-profile">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Gestion des états</h4>
+                                                    <a href="{{ path('etats_index') }}" class="btn btn-primary btn-round">Etats</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="card card-profile">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Gestion des Tranches</h4>
+                                                    <a href="{{ path('tranches_index') }}" class="btn btn-primary btn-round">Tranches</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="card card-profile">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Gestion des types de biens</h4>
+                                                    <a href="{{ path('type_biens_index') }}" class="btn btn-primary btn-round">Types de biens</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="card card-profile">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Gestion des pays</h4>
+                                                    <a href="{{ path('pays_index') }}" class="btn btn-primary btn-round">Pays</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="card card-profile">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Gestion des villes</h4>
+                                                    <a href="{{ path('villes_index') }}" class="btn btn-primary btn-round">Villes</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="card card-profile">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Gestion des propriétaires</h4>
+                                                    <a href="{{ path('proprietaires_index') }}" class="btn btn-primary btn-round">Propriétaire</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content -->
+            <!-- footer -->
+            {% include 'backoffice/layout/footer.html.twig' %}
+            <!-- footer -->
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends '/backoffice/layout/base.html.twig' %}
+
+{% block body %}
+    <div class="wrapper ">
+        {% include 'backoffice/layout/sidebar.html.twig' %}
+
+        <div class="main-panel">
+            {% include 'backoffice/layout/navbar.html.twig' %}
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-product">
+                                <div class="card-body">
+                                    <div class="card-actions text-center">
+                                        <a href="{{ path('tranches_index') }}" class="btn btn-default btn-link" rel="tooltip" data-placement="bottom" title="Liste des tranches">
+                                            <i class="material-icons">art_track</i>
+                                        </a>
+                                        <a href="{{ path('tranches_edit', {id: tranche.id}) }}" type="button" class="btn btn-success btn-link" rel="tooltip" data-placement="bottom" title="Modifier">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                    </div>
+                                    <div class="card-description">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p class="font-weight-bold">Prix min: {{ tranche.prixMin }}</p>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <p class="font-weight-bold">Prix max: {{ tranche.prixMax }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- content -->
+                <!-- footer -->
+                {% include 'backoffice/layout/footer.html.twig' %}
+                <!-- footer -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

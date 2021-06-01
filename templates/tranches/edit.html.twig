@@ -14,14 +14,14 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    {{ include('annonces/_form.html.twig', {'title': 'Modification d\'une annonce '}) }}
+                    {{ include('tranches/_form.html.twig', {'title': 'Modification d\'une tranche'}) }}
                 </div>
 
                 <div class="row">
                     <div class="col-md-12">
-                        <a class="btn" href="{{ path('annonces_index') }}">Liste des annonces</a>
+                        <a class="btn" href="{{ path('tranches_index') }}">Liste des tranches</a>
                         <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn">Delete</a>
-                        {{ include('annonces/_delete_form.html.twig') }}
+                        {{ include('tranches/_delete_form.html.twig') }}
                     </div>
                 </div>
             </div>
