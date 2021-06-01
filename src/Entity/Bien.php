@@ -39,7 +39,7 @@ class Bien
     private $piece;
 
     /**
-     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="bien", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="bien", orphanRemoval=true, cascade={"persist"})
      * @Assert\NotBlank
      */
     private $images;

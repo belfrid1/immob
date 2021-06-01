@@ -2,6 +2,9 @@
         {% set bien = ['bien_index', 'bien_edit', 'bien_new', 'bien_show', 'bien_delete'] %}
         {% set annonces = ['annonces_index', 'annonces_edit', 'annonces_new', 'annonces_show', 'annonces_delete'] %}
         {% set users = ['users_index', 'users_edit', 'users_new', 'users_show', 'users_delete'] %}
+        {% set parameters = ['parameter', 'pays_index', 'pays_new', 'pays_show', 'pays_edit', 'pays_delete', 'proprietaires_index', 'proprietaires_new', 'proprietaires_show', 'proprietaires_edit', 'proprietaires_delete',
+            'tranches_index', 'tranches_new', 'tranches_show', 'tranches_edit', 'tranches_delete', 'type_biens_index', 'type_biens_new', 'type_biens_show', 'type_biens_edit', 'type_biens_delete',
+            'villes_index', 'villes_new', 'villes_show', 'villes_edit', 'villes_delete', 'etats_index', 'etats_new', 'etats_show', 'etats_edit', 'etats_delete'] %}
 
         <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
         
@@ -40,8 +43,8 @@
                     </a>
                 </li>
 
-                <li class="nav-item ">
-                    <a class="nav-link" href="./icons.html">
+                <li class="nav-item {% if app.request.attributes.get('_route') in parameters %} active {% endif %}">
+                    <a class="nav-link" href="{{ path('parameter') }}">
                     <i class="material-icons">bubble_chart</i>
                     <p>Parametres</p>
                     </a>

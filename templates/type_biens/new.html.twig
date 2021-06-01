@@ -1,3 +1,17 @@
+{#
+{% extends 'base.html.twig' %}
+
+{% block title %}New TypeBien{% endblock %}
+
+{% block body %}
+    <h1>Create new TypeBien</h1>
+
+    {{ include('type_biens/_form.html.twig') }}
+
+    <a href="{{ path('type_biens_index') }}">back to list</a>
+{% endblock %}
+#}
+
 {% extends '/backoffice/layout/base.html.twig' %}
 
 {% block body %}
@@ -14,15 +28,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    {{ include('annonces/_form.html.twig', {'title': 'Modification d\'une annonce '}) }}
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <a class="btn" href="{{ path('annonces_index') }}">Liste des annonces</a>
-                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn">Delete</a>
-                        {{ include('annonces/_delete_form.html.twig') }}
-                    </div>
+                    {{ include('type_biens/_form.html.twig', {'title': 'Création d\'un type de bien '}) }}
                 </div>
             </div>
             <!-- content -->
@@ -32,3 +38,4 @@
         </div>
     </div>
     {% endblock %}
+

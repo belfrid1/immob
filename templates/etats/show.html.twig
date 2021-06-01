@@ -1,0 +1,77 @@
+{#
+{% extends 'base.html.twig' %}
+
+{% block title %}Etat{% endblock %}
+
+{% block body %}
+    <h1>Etat</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ etat.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle_etat</th>
+                <td>{{ etat.libelleEtat }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('etats_index') }}">back to list</a>
+
+    <a href="{{ path('etats_edit', {'id': etat.id}) }}">edit</a>
+
+    {{ include('etats/_delete_form.html.twig') }}
+{% endblock %}
+#}
+
+{% extends '/backoffice/layout/base.html.twig' %}
+
+{% block body %}
+    <div class="wrapper ">
+        <!-- sidebar -->
+        {% include 'backoffice/layout/sidebar.html.twig' %}
+        <!-- sidebar -->
+
+        <div class="main-panel">
+            <!-- Navbar -->
+            {% include 'backoffice/layout/navbar.html.twig' %}
+            <!-- End Navbar -->
+            <!-- content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-product">
+                                <div class="card-body">
+                                    <div class="card-actions text-center">
+                                        <a href="{{ path('etats_index') }}" class="btn btn-default btn-link" rel="tooltip" data-placement="bottom" title="Liste des états">
+                                            <i class="material-icons">art_track</i>
+                                        </a>
+                                        <a href="{{ path('etats_edit', {id: etat.id}) }}" type="button" class="btn btn-success btn-link" rel="tooltip" data-placement="bottom" title="Modifier">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                    </div>
+                                    <div class="card-description">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p class="font-weight-bold">Libellé: {{ etat.libelleEtat }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- content -->
+                <!-- footer -->
+                {% include 'backoffice/layout/footer.html.twig' %}
+                <!-- footer -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
