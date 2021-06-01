@@ -14,7 +14,6 @@ class TypeBienFixtures extends Fixture
         // creation type du bien  fixtures
         $typebien = new TypeBien();
         $typebien->setLibelle('villa');
-       
         $manager->persist($typebien);
 
         $manager->flush();

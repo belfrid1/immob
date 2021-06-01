@@ -11,7 +11,7 @@ use Faker\Factory;
 class BienFixtures extends Fixture implements DependentFixtureInterface
 {
 
-    public const BIEN_REFERENCE = 'Bien';
+    
     
     
 
@@ -20,9 +20,9 @@ class BienFixtures extends Fixture implements DependentFixtureInterface
         // creation bien  fixtures
         $faker = Factory::create();
         $biens = [];
-        for ($count = 0; $count < 30; $count++) {
+        for ($count = 0; $count < 50; $count++) {
             $bien = new Bien();
-            $bien->setNom("nomBien" . $count);
+            $bien->setNom("nomBien". $count);
             $bien->setSurface("25 m2");
             $bien->setPiece("4". $count);
             
@@ -32,11 +32,16 @@ class BienFixtures extends Fixture implements DependentFixtureInterface
             $bien->setEtat($this->getReference(EtatFixtures::ETAT_REFERENCE));
             $bien->setTypeBien($this->getReference(TypeBienFixtures::TYPEBIEN_REFERENCE));
             
+            
             $manager->persist($bien);
-            $biens[] = $bien;
+            $biens[] = $biens;
+            $this->setReference("Bien".$count, $bien);
+            
         } 
         $manager->flush();
-        $this->addReference('BIEN',$biens[$faker->numberBetween(0,29)]);
+        
+        
+        
     }
     public function getDependencies()
     {
