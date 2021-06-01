@@ -1,0 +1,41 @@
+{#
+{% extends 'base.html.twig' %}
+
+{% block title %}New TypeBien{% endblock %}
+
+{% block body %}
+    <h1>Create new TypeBien</h1>
+
+    {{ include('type_biens/_form.html.twig') }}
+
+    <a href="{{ path('type_biens_index') }}">back to list</a>
+{% endblock %}
+#}
+
+{% extends '/backoffice/layout/base.html.twig' %}
+
+{% block body %}
+<div class="wrapper ">
+    <!-- sidebar -->
+    {% include 'backoffice/layout/sidebar.html.twig' %}
+    <!-- sidebar -->
+
+    <div class="main-panel">
+        <!-- Navbar -->
+        {% include 'backoffice/layout/navbar.html.twig' %}
+        <!-- End Navbar -->
+        <!-- content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    {{ include('type_biens/_form.html.twig', {'title': 'Création d\'un type de bien '}) }}
+                </div>
+            </div>
+            <!-- content -->
+            <!-- footer -->
+            {% include 'backoffice/layout/footer.html.twig' %}
+            <!-- footer -->
+        </div>
+    </div>
+    {% endblock %}
+

@@ -102,6 +102,28 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-offset-6 col-md-6">
+                        {{ form_widget(form.images) }}
+                    </div>
+
+                </div>
+
+                {% if app.request.attributes.get('_route') == 'bien_edit' and bien.images|length %}
+                    <h2>Images</h2>
+                    <div class="row">
+                        {% for image in bien.images %}
+                            <div class="col-md-4 col-sm-4">
+                                <div class="card card-product">
+                                    <img height="200" width="auto" class="img" src="{{ asset(image.chemin ~ '/' ~ image.nom) }}">
+                                </div>
+                                <div>
+                                    <a href="{{ path('bien_delete_image', {id: image.id})}}" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput" data-delete data-token="{{ csrf_token('delete' ~ image.id )}}"><i class="fa fa-times"></i> Remove</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
 
                 <button class="btn">{{ button_label|default('Save') }}</button>
             {{ form_end(form) }}

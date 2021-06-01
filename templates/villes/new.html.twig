@@ -1,0 +1,26 @@
+{% extends '/backoffice/layout/base.html.twig' %}
+
+{% block body %}
+<div class="wrapper ">
+    <!-- sidebar -->
+    {% include 'backoffice/layout/sidebar.html.twig' %}
+    <!-- sidebar -->
+
+    <div class="main-panel">
+        <!-- Navbar -->
+        {% include 'backoffice/layout/navbar.html.twig' %}
+        <!-- End Navbar -->
+        <!-- content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    {{ include('villes/_form.html.twig', {'title': 'Création d\'une ville '}) }}
+                </div>
+            </div>
+            <!-- content -->
+            <!-- footer -->
+            {% include 'backoffice/layout/footer.html.twig' %}
+            <!-- footer -->
+        </div>
+    </div>
+    {% endblock %}

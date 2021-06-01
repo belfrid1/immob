@@ -1,0 +1,105 @@
+{#
+{% extends 'base.html.twig' %}
+
+{% block title %}TypeBien index{% endblock %}
+
+{% block body %}
+    <h1>TypeBien index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type_bien in type_biens %}
+            <tr>
+                <td>{{ type_bien.id }}</td>
+                <td>{{ type_bien.libelle }}</td>
+                <td>
+                    <a href="{{ path('type_biens_show', {'id': type_bien.id}) }}">show</a>
+                    <a href="{{ path('type_biens_edit', {'id': type_bien.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('type_biens_new') }}">Create new</a>
+{% endblock %}
+#}
+
+{% extends '/backoffice/layout/base.html.twig' %}
+
+{% block body %}
+    <div class="wrapper ">
+        <!-- sidebar -->
+        {% include 'backoffice/layout/sidebar.html.twig' %}
+        <!-- sidebar -->
+
+        <div class="main-panel">
+            <!-- Navbar -->
+            {% include 'backoffice/layout/navbar.html.twig' %}
+            <!-- End Navbar -->
+            <!-- content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class="card-title ">Types de biens</h4>
+                                    <p class="card-category"><a href="{{ path('type_biens_new') }}"><i class="material-icons"></i> Creer un tyoe de bien</a></p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Libelle</th>
+                                                <th>actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for typeBien in type_biens %}
+                                                <tr>
+                                                    <td>{{ typeBien.id }}</td>
+                                                    <td>{{ typeBien.libelle }}</td>
+                                                    <td>
+                                                        <a href="{{ path('type_biens_show', {'id': typeBien.id}) }}">show</a>
+                                                        <a href="{{ path('type_biens_edit', {'id': typeBien.id}) }}">edit</a>
+                                                    </td>
+                                                </tr>
+                                            {% else %}
+                                                <tr>
+                                                    <td colspan="5">no records found</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content -->
+            <!-- footer -->
+            {% include 'backoffice/layout/footer.html.twig' %}
+            <!-- footer -->
+        </div>
+    </div>
+
+
+{% endblock %}
+
+

@@ -1,0 +1,3 @@
+<form style="display: none;" id="logout-form" method="post" action="{{ path('tranches_delete', {'id': tranche.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ tranche.id) }}">
+</form>

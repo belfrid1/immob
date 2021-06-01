@@ -1,0 +1,118 @@
+{#
+{% extends 'base.html.twig' %}
+
+{% block title %}Proprietaire index{% endblock %}
+
+{% block body %}
+    <h1>Proprietaire index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Adresse</th>
+                <th>Telephone</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for proprietaire in proprietaires %}
+            <tr>
+                <td>{{ proprietaire.id }}</td>
+                <td>{{ proprietaire.nom }}</td>
+                <td>{{ proprietaire.prenom }}</td>
+                <td>{{ proprietaire.adresse }}</td>
+                <td>{{ proprietaire.telephone }}</td>
+                <td>
+                    <a href="{{ path('proprietaires_show', {'id': proprietaire.id}) }}">show</a>
+                    <a href="{{ path('proprietaires_edit', {'id': proprietaire.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('proprietaires_new') }}">Create new</a>
+{% endblock %}
+#}
+
+{% extends '/backoffice/layout/base.html.twig' %}
+
+{% block body %}
+    <div class="wrapper ">
+        <!-- sidebar -->
+        {% include 'backoffice/layout/sidebar.html.twig' %}
+        <!-- sidebar -->
+
+        <div class="main-panel">
+            <!-- Navbar -->
+            {% include 'backoffice/layout/navbar.html.twig' %}
+            <!-- End Navbar -->
+            <!-- content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class="card-title ">Pays</h4>
+                                    <p class="card-category"><a href="{{ path('proprietaires_new') }}"><i class="material-icons"></i> Creer un propriétaire</a></p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Nom</th>
+                                                <th>Prenom</th>
+                                                <th>Adresse</th>
+                                                <th>Telephone</th>
+                                                <th>actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for proprietaire in proprietaires %}
+                                                <tr>
+                                                    <td>{{ proprietaire.id }}</td>
+                                                    <td>{{ proprietaire.nom }}</td>
+                                                    <td>{{ proprietaire.prenom }}</td>
+                                                    <td>{{ proprietaire.adresse }}</td>
+                                                    <td>{{ proprietaire.telephone }}</td>
+                                                    <td>
+                                                        <a href="{{ path('proprietaires_show', {'id': proprietaire.id}) }}">show</a>
+                                                        <a href="{{ path('proprietaires_edit', {'id': proprietaire.id}) }}">edit</a>
+                                                    </td>
+                                                </tr>
+                                            {% else %}
+                                                <tr>
+                                                    <td colspan="5">no records found</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content -->
+            <!-- footer -->
+            {% include 'backoffice/layout/footer.html.twig' %}
+            <!-- footer -->
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+

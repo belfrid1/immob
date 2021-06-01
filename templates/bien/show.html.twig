@@ -14,7 +14,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <div class="card card-product">
                             <div class="card-body">
                                 <div class="card-actions text-center">
@@ -56,6 +56,22 @@
                                     </div>
 
 
+                                    <div class="row">
+                                        {% for image in bien.images %}
+                                            <div class="col-md-4">
+                                                <div class="card card-product">
+                                                    <div class="card-header card-header-image" data-header-animation="false">
+                                                        <a href="#pablo">
+                                                            <img height="200" width="auto" class="img" src="{{ asset(image.chemin ~ '/' ~ image.nom) }}">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+
+                                    </div>
+
+
                                 </div>
                             </div>
                             <div class="card-footer">
@@ -65,16 +81,6 @@
                                 <div class="stats">
                                     <p class="card-category"><i class="material-icons">place</i> {{ bien.ville }}, {{ bien.ville.pays }}</p>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card card-product">
-                            <div class="card-header card-header-image" data-header-animation="true">
-                                <a href="#pablo">
-                                    <img class="img" src="https://demos.creative-tim.com/material-dashboard-pro/assets/img/card-2.jpg">
-                                </a>
                             </div>
                         </div>
                     </div>
