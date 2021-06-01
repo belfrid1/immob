@@ -5,29 +5,31 @@ namespace App\DataFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Annonce;
+use App\Entity\Bien;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Faker\Factory;
 
 class AnnoncesFixtures extends Fixture implements DependentFixtureInterface
 {
-    public const ANNONCE_REFERENCE = 'annonce1';
+    // public const ANNONCE_REFERENCE = 'annonce1';
     
    
     public function load(ObjectManager $manager)
     {
+        $faker = Factory::create();
         
-        // $product = new Product();
-        // $manager->persist($product);
         $annonces = [];
-        for ($count = 0; $count < 10; $count++) {
+        for ($count = 0; $count < 30; $count++) {
             $annonce = new Annonce();
 
-            $annonce->setLibelleType("annonce" . $count);
-            $annonce->setBien($this->getReference('BIEN'));
+            $annonce->setLibelleType("annonce".$count);
+            $annonce->setBien($this->getReference('Bien'.$count));
+            // $annonce->setBien($this->getReference(Bien::FBIEN));
+            
             $manager->persist($annonce);
-            $annonces[] =  $annonce;
-            $manager->flush();
-            $this->addReference(self::ANNONCE_REFERENCE, $annonce);
+            $annonces[] =  $annonce; 
         }
+        $manager->flush();
     }
     public function getDependencies()
     {

@@ -16,9 +16,7 @@ class TrancheFixtures extends Fixture
         $tranche = new Tranche();
         $tranche->setPrixMin(2000);
         $tranche->setPrixMax(4000);
-        
         $manager->persist($tranche);
-
         $manager->flush();
         $this->addReference(self::TRANCHE_REFERENCE, $tranche);
     }

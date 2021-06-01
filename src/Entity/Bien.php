@@ -78,12 +78,10 @@ class Bien
      * @Assert\NotBlank
      */
     private $type_bien;
-
-
-
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->annonces = new ArrayCollection();
     }
 
     public function __toString()
