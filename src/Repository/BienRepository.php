@@ -47,4 +47,20 @@ class BienRepository extends ServiceEntityRepository
         ;
     }
     */
+
+
+    public function findSearchFilter($ville,$surface,$type): ?array
+    {
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.surface Like :surface')
+            ->andWhere('b.ville = :ville')
+            ->andWhere('b.type_bien = :type')
+            ->setParameter('surface', "%".$surface."%")
+            ->setParameter('ville', $ville)
+            ->setParameter('type', $type)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 }
